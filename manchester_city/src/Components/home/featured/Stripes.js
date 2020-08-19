@@ -48,11 +48,11 @@ function Stripes() {
                     rotate: [stripe.rotate],
                     top: [stripe.top],
                     timing: {delay:stripe.delay, duration:200, ease: easePolyOut},
-                    events: {
-                        end(){
-                            console.log('animation finished')
-                        }
-                    }
+                    // events: {
+                    //     end(){
+                    //         console.log('animation finished')
+                    //     }
+                    // }
                 }}
           >
               {({rotate,top, opacity, left, background})=>{
