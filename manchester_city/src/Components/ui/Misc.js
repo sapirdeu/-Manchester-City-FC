@@ -8,9 +8,10 @@ function Tag(props) {
                 background: props.bck,
                 fontSize: props.size,
                 color: props.color,
-                padding: '5px',
+                padding: '5px 10px',
                 display: 'inline-block',
-                fontFamily: 'Righteous'
+                fontFamily: 'Righteous',
+                ...props.add
             }}
         >
             {props.children}
