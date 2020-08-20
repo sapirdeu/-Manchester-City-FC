@@ -16,13 +16,10 @@ const config = {
 firebase.initializeApp(config);
 
 const firebaseDB = firebase.database();
-// firebaseDB.ref('matches').once('value').then((snapshot)=>{
-//     console.log(snapshot.val());
-// })
-
 const firebaseMatches = firebaseDB.ref('matches');
+const firebasePromotions = firebaseDB.ref('promotions');
 
 // const auth = firebase.auth();
 // const storage = firebase.storage();
 
-export {firebaseDB, firebaseMatches/*, auth, storage*/ };
+export {firebaseDB, firebaseMatches, firebasePromotions/*, auth, storage*/ };
