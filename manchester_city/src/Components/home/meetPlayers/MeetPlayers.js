@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Strips from '../../../Resources/images/stripes.png';
+import Stripes from '../../../Resources/images/stripes.png';
 import {Tag} from '../../ui/Misc'
 import Reveal from 'react-reveal/Reveal'
 import HomeCards from './HomeCards';
@@ -16,7 +16,7 @@ function MeetPlayers() {
         >
             <div
                 className="home_meetplayers"
-                style={{background: `#ffffff url(${Strips})`}}
+                style={{background: `#ffffff url(${Stripes})`}}
             >
                 <div className="container">
                     <div className="home_meetplayers_wrapper">
