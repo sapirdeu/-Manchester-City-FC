@@ -5,7 +5,6 @@ import { firebase } from '../../firebase'
 
 function SignIn(props) {
     const [formError, setFormError] = useState(false);
-    const [formSuccess, setFormSuccess] = useState('');
     const [formData, setFormData] = useState({
         email:{
             element: 'input',
@@ -103,10 +102,6 @@ function SignIn(props) {
                             <div className="error_label">Something is wrong, try again</div>
                             : null
                         }
-
-                        {/* <div className="success_label">
-                            {formSuccess}
-                        </div> */}
 
                         <button onClick={(event)=> submitForm(event)}>
                             Log in
