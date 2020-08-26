@@ -10,7 +10,7 @@ function SignIn(props) {
             element: 'input',
             value: '',
             config: {
-                name: 'email_imput',
+                name: 'email_input',
                 type: 'email',
                 placeholder: 'Enter your email'
             },
@@ -25,7 +25,7 @@ function SignIn(props) {
             element: 'input',
             value: '',
             config: {
-                name: 'password_imput',
+                name: 'password_input',
                 type: 'password',
                 placeholder: 'Enter your password'
             },

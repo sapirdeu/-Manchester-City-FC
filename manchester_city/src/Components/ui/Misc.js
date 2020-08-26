@@ -28,7 +28,7 @@ function Tag(props) {
     }
 }
 
-function FirebaseLooper(snapshot) {
+function firebaseLooper(snapshot) {
     let data = [];
     snapshot.forEach((childSnapshot) => {
         data.push({
@@ -65,4 +65,4 @@ function validate(element) {
     return error;
 }
 
-export {Tag, FirebaseLooper, reverseArray, validate}
+export {Tag, firebaseLooper , reverseArray, validate}

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {firebaseMatches} from '../../../firebase';
-import { FirebaseLooper, reverseArray } from '../../ui/Misc';
+import { firebaseLooper, reverseArray } from '../../ui/Misc';
 import MatchesBlock from '../../ui/MatchesBlock';
 import Slide from 'react-reveal/Slide';
 
@@ -9,7 +9,7 @@ function Blocks() {
 
     useEffect(()=>{
         firebaseMatches.limitToLast(6).once('value').then((snapshot)=>{
-            const matches1 = FirebaseLooper(snapshot);
+            const matches1 = firebaseLooper(snapshot);
             setMatches(reverseArray(matches1));
         })
     }, []);

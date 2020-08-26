@@ -21,11 +21,49 @@ function FormFields({id, formData, change}) {
             case('input'):
                 formTemaplte = (
                     <div>
+                        { formData.showlabel ? 
+                            <div className="label_inputs">
+                                {formData.config.label}
+                            </div>
+                            :
+                            null
+                        }
+
                         <input
                             {...formData.config}
                             value={formData.value}
                             onChange={(event)=>change({event,id})}
                         />
+                        {showError()}
+                    </div>
+                )
+                break;
+            case('select'):
+                formTemaplte = (
+                    <div>
+                        { formData.showlabel ? 
+                            <div className="label_inputs">
+                                {formData.config.label}
+                            </div>
+                            :
+                            null
+                        }
+
+                        <select
+                            value={formData.value}
+                            onChange={(event)=>change({event,id})}
+                        >
+                            <option value="">Select one</option>
+                           
+                            {
+                                formData.config.options.map((item)=>(
+                                    <option key={item.key} value={item.key}>
+                                        {item.value}
+                                    </option>
+                                ))
+                            }
+                        </select>
+
                         {showError()}
                     </div>
                 )
