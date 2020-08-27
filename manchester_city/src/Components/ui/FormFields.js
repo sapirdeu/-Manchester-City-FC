@@ -3,80 +3,76 @@ import React from 'react'
 function FormFields({id, formData, change}) {
 
     const showError = () => {
-        let errorMessage = 
-            <div className="error_label">
+        let errorMessage = <div className="error_label">
                 {
-                    formData.validation && !formData.valid ? 
+                    formData.validation && !formData.valid ?
                         formData.validationMessage
-                    : null
+                    :null
                 }
-            </div>
-        return errorMessage;
+        </div>
+        return errorMessage
     }
 
-    const renderTemaplte = () => {
-        let formTemaplte = null;
-        
+
+
+    const renderTemplate = () => {
+        let formTemplate = null;
+
         switch(formData.element){
             case('input'):
-                formTemaplte = (
+                formTemplate = (
                     <div>
-                        { formData.showlabel ? 
+                        { formData.showlabel ?
                             <div className="label_inputs">
                                 {formData.config.label}
                             </div>
-                            :
-                            null
+                            :null
                         }
-
                         <input
                             {...formData.config}
                             value={formData.value}
-                            onChange={(event)=>change({event,id})}
+                            onChange={(event)=> change({event,id})}
                         />
-                        {showError()}
+                        { showError() }
                     </div>
                 )
-                break;
+            break;
             case('select'):
-                formTemaplte = (
+                formTemplate = (
                     <div>
-                        { formData.showlabel ? 
+                        { formData.showlabel ?
                             <div className="label_inputs">
                                 {formData.config.label}
                             </div>
-                            :
-                            null
+                            :null
                         }
-
                         <select
                             value={formData.value}
-                            onChange={(event)=>change({event,id})}
+                            onChange={(event)=> change({event,id})}
                         >
                             <option value="">Select one</option>
-                           
                             {
                                 formData.config.options.map((item)=>(
-                                    <option key={item.key} value={item.key}>
+                                   <option key={item.key} value={item.key}>
                                         {item.value}
-                                    </option>
+                                   </option> 
                                 ))
                             }
                         </select>
-
-                        {showError()}
+                        { showError() }
                     </div>
                 )
-                break;
+            break;
             default:
-                formTemaplte = null;
+                formTemplate = null;
+
         }
-        return formTemaplte;
+        return formTemplate;
     }
 
     return (
         <div>
-            {renderTemaplte()}
+            {renderTemplate()}
         </div>
     )
 }

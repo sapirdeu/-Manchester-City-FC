@@ -19,7 +19,7 @@ function AdminNav() {
         },
         {
             title: 'Add Players',
-            linkTo: '/admin_matches/add_player'
+            linkTo: '/admin_players/add_players'
         }
     ]
 
