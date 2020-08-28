@@ -14,7 +14,7 @@ function PlayerCard(props) {
                     {props.number}
                 </div>
                 <div className="player_card_name">
-                    <span>{props.firstname}</span>
+                    <span>{props.name}</span>
                     <span>{props.lastname}</span>
                 </div>
             </div>

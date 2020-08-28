@@ -51,7 +51,7 @@ function HomeCards(props) {
                         >
                             <PlayerCard
                                 number="30"
-                                firstname="Nicolas"
+                                name="Nicolas"
                                 lastname="Otamendi"
                                 bck={Otamendi}
                             />
