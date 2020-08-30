@@ -1,40 +1,15 @@
-import React, {useState} from 'react'
-// import React, {useState, useEffect, useCallback} from 'react'
+// import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import AdminLayout from '../../../Hoc/AdminLayout'
 import FormFields from '../../ui/FormFields'
 import { validate } from '../../ui/Misc'
-import { firebaseDB, firebaseMatches } from '../../../firebase'
-// import { firebaseTeams } from '../../../firebase'
-// import {firebaseLooper} from '../../ui/Misc'
+import { firebaseDB, firebaseMatches, firebaseTeams } from '../../../firebase'
+import {firebaseLooper} from '../../ui/Misc'
 
 function AddEditMatch(props) {
-    // const [matchID, setMatchID] = useState('');
-    // const [formType, setFormType] = useState('');
-    // const [formSuccess, setFormSuccess] = useState('');
-    // const [formError, setFormError] = useState(false);
-    const [teams] = useState([
-        {key: "Arsenal", value:"Arsenal"},
-        {key: "Bournemouth", value:"Bournemouth"},
-        {key: "Brighton", value:"Brighton"},
-        {key: "Burnley", value:"Burnley"},
-        {key: "Chelsea", value:"Chelsea"},
-        {key: "C.Palace", value:"C.Palace"},
-        {key: "Everton", value:"Everton"},
-        {key: "Fulham", value:"Fulham"},
-        {key: "Hudd.Town", value:"Hudd.Town"},
-        {key: "Cardiff", value:"Cardiff"},
-        {key: "Leicester", value:"Leicester"},
-        {key: "Liverpool", value:"Liverpool"},
-        {key: "Newcastle", value:"Newcastle"},
-        {key: "Tottenham", value:"Tottenham"},
-        {key: "Watford", value:"Watford"},
-        {key: "Westham", value:"Westham"},
-        {key: "Wolverhampton", value:"Wolverhampton"},
-        {key: "Southampton", value:"Southampton"},
-        {key: "Man.City", value:"Man.City"},
-        {key: "Man.Utd", value:"Man.Utd"}
-    ]);
-    const [formType] = useState('Edit Match');
+    const [matchID, setMatchID] = useState('');
+    const [formType, setFormType] = useState('');
+    const [teams, setTeams] = useState([]);
     const [formSuccess, setFormSuccess] = useState('');
     const [formError, setFormError] = useState(false);
     const [formData, setFormData] = useState({
@@ -60,28 +35,7 @@ function AddEditMatch(props) {
                 label: 'Select a local team',
                 name: 'select_team',
                 type: 'select',
-                options: [
-                    {key: "Arsenal", value:"Arsenal"},
-                    {key: "Bournemouth", value:"Bournemouth"},
-                    {key: "Brighton", value:"Brighton"},
-                    {key: "Burnley", value:"Burnley"},
-                    {key: "Chelsea", value:"Chelsea"},
-                    {key: "C.Palace", value:"C.Palace"},
-                    {key: "Everton", value:"Everton"},
-                    {key: "Fulham", value:"Fulham"},
-                    {key: "Hudd.Town", value:"Hudd.Town"},
-                    {key: "Cardiff", value:"Cardiff"},
-                    {key: "Leicester", value:"Leicester"},
-                    {key: "Liverpool", value:"Liverpool"},
-                    {key: "Newcastle", value:"Newcastle"},
-                    {key: "Tottenham", value:"Tottenham"},
-                    {key: "Watford", value:"Watford"},
-                    {key: "Westham", value:"Westham"},
-                    {key: "Wolverhampton", value:"Wolverhampton"},
-                    {key: "Southampton", value:"Southampton"},
-                    {key: "Man.City", value:"Man.City"},
-                    {key: "Man.Utd", value:"Man.Utd"}
-                ]
+                options: []
             },
             validation:{
                 required: true
@@ -112,28 +66,7 @@ function AddEditMatch(props) {
                 label: 'Select a away team',
                 name: 'select_team',
                 type: 'select',
-                options: [
-                    {key: "Arsenal", value:"Arsenal"},
-                    {key: "Bournemouth", value:"Bournemouth"},
-                    {key: "Brighton", value:"Brighton"},
-                    {key: "Burnley", value:"Burnley"},
-                    {key: "Chelsea", value:"Chelsea"},
-                    {key: "C.Palace", value:"C.Palace"},
-                    {key: "Everton", value:"Everton"},
-                    {key: "Fulham", value:"Fulham"},
-                    {key: "Hudd.Town", value:"Hudd.Town"},
-                    {key: "Cardiff", value:"Cardiff"},
-                    {key: "Leicester", value:"Leicester"},
-                    {key: "Liverpool", value:"Liverpool"},
-                    {key: "Newcastle", value:"Newcastle"},
-                    {key: "Tottenham", value:"Tottenham"},
-                    {key: "Watford", value:"Watford"},
-                    {key: "Westham", value:"Westham"},
-                    {key: "Wolverhampton", value:"Wolverhampton"},
-                    {key: "Southampton", value:"Southampton"},
-                    {key: "Man.City", value:"Man.City"},
-                    {key: "Man.Utd", value:"Man.Utd"}
-                ]
+                options: []
             },
             validation:{
                 required: true
@@ -221,61 +154,60 @@ function AddEditMatch(props) {
         }
     });
 
-    // const updateFields = useCallback((match, teamsOptions, allTeams, type, currMatchId)=>{
+    const updateFields = (match, teamsOptions, allTeams, type, currMatchId)=>{
         
-    //     const newFormData = {...formData}
+        const newFormData = {...formData}
 
-    //     for(let key in newFormData){
-    //         if(match){
-    //             newFormData[key].value = match[key];
-    //             newFormData[key].valid = true;
-    //         }
-    //         if(key === 'local' || key === 'away'){
-    //             newFormData[key].config.options = teamsOptions;
-    //         }
-    //     }
+        for(let key in newFormData){
+            if(match){
+                newFormData[key].value = match[key];
+                newFormData[key].valid = true;
+            }
+            if(key === 'local' || key === 'away'){
+                newFormData[key].config.options = teamsOptions;
+            }
+        }
 
-    //     setMatchID(currMatchId);
-    //     setFormType(type);
-    //     setFormData(newFormData);
-    //     setTeams(allTeams);
-    // },[formData])
+        setMatchID(currMatchId);
+        setFormType(type);
+        setFormData(newFormData);
+        setTeams(allTeams);
+    }
 
-    // useEffect(()=>{
-    //     const currMatchId = props.match.params.id;
+    useEffect(()=>{
+        const currMatchId = props.match.params.id;
         
-    //     const getTeams = (match, type) => {
-    //         firebaseTeams.once('value')
-    //         .then((snapshot)=>{
-    //             const allTeams = firebaseLooper(snapshot);
-    //             const teamsOptions = []
-    //             snapshot.forEach((childSnapshot)=>{
-    //                 teamsOptions.push({
-    //                     key: childSnapshot.val().shortName,
-    //                     value: childSnapshot.val().shortName
-    //                 })
-    //             });
+        const getTeams = (match, type) => {
+            firebaseTeams.once('value')
+            .then((snapshot)=>{
+                const allTeams = firebaseLooper(snapshot);
+                const teamsOptions = []
+                snapshot.forEach((childSnapshot)=>{
+                    teamsOptions.push({
+                        key: childSnapshot.val().shortName,
+                        value: childSnapshot.val().shortName
+                    })
+                });
     
-    //             updateFields(match, teamsOptions, allTeams, type, currMatchId);
-    //         })
-    //     }
+                updateFields(match, teamsOptions, allTeams, type, currMatchId);
 
-        
-    //     return () => {
-    //         if (!currMatchId) {
-    //             console.log('nooo');
-    //             getTeams(match, 'Add Match');
-    //         } else {
-    //             console.log('yesss')
-    //             firebaseDB.ref(`matches/${currMatchId}`).once('value')
-    //             .then((snapshot)=>{
-    //                 const match = snapshot.val();
-    //                 getTeams(match, 'Edit Match');
-    //             })
-    //         }
-    //     }
+                
+            })
 
-    // }, [props.match.params.id, updateFields]);
+            
+        }
+
+            if (!currMatchId) {
+               
+                getTeams(false, 'Add Match');
+            } else {
+                firebaseDB.ref(`matches/${currMatchId}`).once('value')
+                .then((snapshot)=>{
+                    const match = snapshot.val();
+                    getTeams(match, 'Edit Match');
+                })
+            }
+    }, []);
 
     const successForm = (message) => {
         setFormSuccess(message);
@@ -324,7 +256,6 @@ function AddEditMatch(props) {
 
         if(isFormValid) {
             if(formType === 'Edit Match'){
-                let matchID = '-LErlCZn5tjRJU3rMx0n';
                 firebaseDB.ref(`matches/${matchID}`)
                 .update(dataToSubmit)
                 .then(()=>{
@@ -340,43 +271,6 @@ function AddEditMatch(props) {
             setFormError(true);
         }
     }
-
-    // useEffect(()=>{
-    //     const currMatchId = props.match.params.id;
-
-    //     firebaseTeams.once('value')
-    //     .then((snapshot)=>{
-    //         const allTeams = firebaseLooper(snapshot);
-    //         const teamsOptions = []
-    //         snapshot.forEach((childSnapshot)=>{
-    //             teamsOptions.push({
-    //                 key: childSnapshot.val().shortName,
-    //                 value: childSnapshot.val().shortName
-    //             })
-    //         });
-            
-        
-    //         const newFormData = {...formData}
-
-    //         for(let key in newFormData){
-    //             if(key === 'local' || key === 'away'){
-    //                 newFormData[key].config.options = teamsOptions;
-    //             }
-    //         }
-
-    //         let type;
-    //         if (!currMatchId) {
-    //             type = 'Add Match';
-    //         } else {
-    //             type = 'Edit Match';
-    //         }
-
-    //         setMatchID(currMatchId);
-    //         setFormType(type);
-    //         setFormData(newFormData);
-    //         setTeams(allTeams);
-    //     })
-    // }, [props.match.params.id, formData, setMatchID, setTeams]);
     
     return (
         <AdminLayout>
