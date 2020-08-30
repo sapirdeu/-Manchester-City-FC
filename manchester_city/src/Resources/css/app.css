@@ -298,7 +298,7 @@ footer .footer_discl {
 
 .match_box_big {
     width:100%;
-    border-bottom: 2px solid #98c6e9;
+    border-bottom: 2px solid #98c6e9; 
     padding: 20px;
     box-sizing: border-box;
     height: 143px;
@@ -518,6 +518,7 @@ footer .footer_discl {
 ===============================*/
 
 .the_matches_container {
+    text-align: center;
     margin-top: 96px;
 }
 

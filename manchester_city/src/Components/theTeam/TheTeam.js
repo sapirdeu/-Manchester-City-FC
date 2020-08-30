@@ -59,7 +59,6 @@ function TheTeam() {
             className="the_team_container"
             style={{background: `url(${Stripes}) repeat`}}
         >
-            {console.log(loading)}
             {
                 !loading ?
                     <div>
