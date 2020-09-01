@@ -53,7 +53,7 @@ function SignIn(props) {
         setFormError(false);
     }
 
-    function  submitForm(event) {
+    function submitForm(event) {
         event.preventDefault();
 
         let dataToSubmit = {};
@@ -63,7 +63,7 @@ function SignIn(props) {
             dataToSubmit[key] = formData[key].value;
             isFormValid = formData[key].valid && isFormValid
         }
-
+        
         if(isFormValid) {
             firebase.auth()
             .signInWithEmailAndPassword(
@@ -82,10 +82,12 @@ function SignIn(props) {
 
 
     return (
+        
         <div className="container">
             <div className="signin_wrapper" style={{margin: '100px'}}>
             <form onSubmit={(event)=> submitForm(event)}>
                     <h2>Please Login</h2>
+                    {console.log(props)}
                         <FormFields
                             id={'email'}
                             formData={formData.email}

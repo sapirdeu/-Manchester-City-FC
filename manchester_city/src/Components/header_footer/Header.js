@@ -29,8 +29,8 @@ function Header() {
                         </div>
                     </div>
 
-                    <Link to='./the_team'>
-                        <Button color='inherit'>The Team</Button>
+                    <Link to='./sign_in'>
+                        <Button color='inherit'>Login</Button>
                     </Link>
 
                     <Link to='./the_matches'>

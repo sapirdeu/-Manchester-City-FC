@@ -207,7 +207,7 @@ function AddEditMatch(props) {
                     getTeams(match, 'Edit Match');
                 })
             }
-    }, []);
+    }, [props.match.params.id]);
 
     const successForm = (message) => {
         setFormSuccess(message);

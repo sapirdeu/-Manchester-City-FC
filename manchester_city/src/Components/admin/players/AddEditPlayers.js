@@ -141,7 +141,7 @@ function AddEditPlayers(props) {
             })
         }
 
-    }, []);
+    }, [props.match.params.id]);
 
 
     const successForm = (message) => {

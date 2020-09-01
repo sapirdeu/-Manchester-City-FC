@@ -3,7 +3,7 @@ import CityLogo from '../ui/Icons';
 
 function Footer() {
     return (
-        <footer className="bck_blue">
+        <footer className="bck_blue_footer">
             <div className="footer_logo">
                 <CityLogo
                     link="true"

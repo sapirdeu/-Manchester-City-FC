@@ -17,6 +17,15 @@ a {
     background: #0d1831;
 }
 
+.bck_blue_loggedin {
+    margin-top: -96px;
+    background: #0d1831;
+}
+
+.bck_blue_footer {
+    background: #0d1831;
+}
+
 .bck_lblue {
     background: #98c5e9;
 }
@@ -522,6 +531,10 @@ footer .footer_discl {
     margin-top: 96px;
 }
 
+.the_matches_container_loggedin {
+    text-align: center;
+}
+
 .the_matches_wrapper {
     display: flex;
 }
@@ -558,17 +571,18 @@ footer .footer_discl {
 ===============================*/
 
 .admin_container {
-    margin-top: 96px;
     display:flex;
 }
 
 .admin_container .admin_left_nav {
+    margin-top: 96px;
     min-height: 100vh;
     background: #282828;
     border-right: 2px solid #01285e;
 }
 
 .admin_container  .admin_right {
+    margin-top: 96px;
     flex-grow: 1;
 }
 .admin_container  .admin_progress {
